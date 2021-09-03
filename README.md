@@ -17,6 +17,6 @@ The main class of this application is GameApplication, placed under src/main/jav
 mvn compile exec:java
 ```
 ## Customization 
-The default size of the plane is configured to 25x25, you can change it by editing GameApplication.java
+The default plane size is configured to 25x25. The game supports configurable plane size. The plane size can be configured with boundary in GameApplication.java
 
 _Note: You can also run the application directly from the editor
