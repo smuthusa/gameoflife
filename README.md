@@ -19,4 +19,4 @@ mvn compile exec:java
 ## Customization 
 The default size of the plane is configured to 25x25, you can change it by editing GameApplication.java
 
-_Note: You can also run the application directly from the editor_# gameoflife
+_Note: You can also run the application directly from the editor
