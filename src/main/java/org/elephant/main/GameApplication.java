@@ -2,14 +2,12 @@ package org.elephant.main;
 
 import org.elephant.game.GameController;
 import org.elephant.game.GameOfLife;
-import org.elephant.game.model.CellHealth;
 import org.elephant.game.model.Coordinate;
 import org.elephant.game.print.ConsolePrinter;
 import org.elephant.game.rule.HealthTransitionRule;
 import org.elephant.game.seed.GliderSeed;
 import org.elephant.game.visitor.NeighbourCellVisitor;
 
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class GameApplication {
