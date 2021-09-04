@@ -15,7 +15,7 @@ public class GliderSeed implements CellSeed {
     private final Coordinate initialCoordinate;
 
     public GliderSeed() {
-        steps = Arrays.asList(RIGHT, RIGHT, TOP, TOP_LEFT);
+        steps = Arrays.asList(RIGHT, RIGHT, UP, UP_LEFT);
         initialCoordinate = new Coordinate(2, 1);
     }
 

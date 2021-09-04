@@ -22,8 +22,7 @@ public class GameApplication {
     public void run() {
         Coordinate boundary = new Coordinate(25, 25);
         NeighbourCellVisitor visitor = new NeighbourCellVisitor(new HealthTransitionRule(), boundary);
-        CellHealth[][] plane = newPlane(boundary);
-        GameController controller = new GameController(plane, boundary, new GliderSeed(), visitor, new ConsolePrinter());
+        GameController controller = new GameController(boundary, new GliderSeed(), visitor, new ConsolePrinter());
         GameOfLife gameOfLife = new GameOfLife(controller, 1, TimeUnit.SECONDS);
         Thread gameThread = new Thread(gameOfLife, "GameOfLife");
         gameThread.start();
@@ -33,13 +32,5 @@ public class GameApplication {
             gameOfLife.stop();
             Thread.currentThread().interrupt();
         }
-    }
-
-    private CellHealth[][] newPlane(Coordinate boundary) {
-        CellHealth[][] plane = new CellHealth[boundary.getRow()][boundary.getColumn()];
-        for (CellHealth[] cellHealths : plane) {
-            Arrays.fill(cellHealths, CellHealth.DEAD);
-        }
-        return plane;
     }
 }

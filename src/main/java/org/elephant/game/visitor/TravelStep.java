@@ -7,14 +7,14 @@ import static org.elephant.game.util.MathOp.*;
 import static org.elephant.game.util.MathOp.PLUS;
 
 public enum TravelStep {
-    TOP_LEFT(MINUS, MINUS),
-    TOP(MINUS, NO_OP),
-    TOP_RIGHT(MINUS, PLUS),
+    UP_LEFT(MINUS, MINUS),
+    UP(MINUS, NO_OP),
+    UP_RIGHT(MINUS, PLUS),
     LEFT(NO_OP, MINUS),
     RIGHT(NO_OP, PLUS),
-    BOTTOM_LEFT(PLUS, MINUS),
-    BOTTOM(PLUS, NO_OP),
-    BOTTOM_RIGHT(PLUS, PLUS);
+    DOWN_LEFT(PLUS, MINUS),
+    DOWN(PLUS, NO_OP),
+    DOWN_RIGHT(PLUS, PLUS);
 
     private final MathOp rowOp;
     private final MathOp colOp;

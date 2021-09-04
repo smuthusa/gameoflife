@@ -20,13 +20,9 @@ public class GameControllerTest {
     public void testTransition() {
         Coordinate boundary = new Coordinate(10, 10);
         NeighbourCellVisitor visitor = new NeighbourCellVisitor(new HealthTransitionRule(), boundary);
-        CellHealth[][] plane = new CellHealth[boundary.getRow()][boundary.getColumn()];
-        for (CellHealth[] cellHealths : plane) {
-            Arrays.fill(cellHealths, CellHealth.DEAD);
-        }
         AtomicReference<CellHealth[][]> result = new AtomicReference<>();
         Printer unitTestObserver = result::set;
-        GameController controller = new GameController(plane, boundary, new GliderSeed(), visitor, unitTestObserver);
+        GameController controller = new GameController(boundary, new GliderSeed(), visitor, unitTestObserver);
         controller.doTransition();
         CellHealth[][] resultPlane = result.get();
         assertNotNull(resultPlane);

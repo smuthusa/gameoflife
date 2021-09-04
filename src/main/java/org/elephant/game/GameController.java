@@ -6,6 +6,7 @@ import org.elephant.game.print.Printer;
 import org.elephant.game.seed.CellSeed;
 import org.elephant.game.visitor.NeighbourCellVisitor;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class GameController {
@@ -14,14 +15,22 @@ public class GameController {
     private final Coordinate boundary;
     private final PlaneReset planeReset;
     private final NeighbourCellVisitor cellVisitor;
-    public GameController(CellHealth[][] plane, Coordinate boundary, CellSeed cellSeed, NeighbourCellVisitor cellVisitor, Printer printer) {
+    public GameController(Coordinate boundary, CellSeed cellSeed, NeighbourCellVisitor cellVisitor, Printer printer) {
         this.boundary = boundary;
         this.printer = printer;
-        this.plane = plane;
+        this.plane = newPlane(boundary);
         this.cellVisitor = cellVisitor;
         boundary.validate();
         cellSeed.seed(plane);
         planeReset = new PlaneReset();
+    }
+
+    private CellHealth[][] newPlane(Coordinate boundary) {
+        CellHealth[][] newPlane = new CellHealth[boundary.getRow()][boundary.getColumn()];
+        for (CellHealth[] cellHealths : newPlane) {
+            Arrays.fill(cellHealths, CellHealth.DEAD);
+        }
+        return newPlane;
     }
 
     private void displayCurrentState(CellHealth[][] plane) {
