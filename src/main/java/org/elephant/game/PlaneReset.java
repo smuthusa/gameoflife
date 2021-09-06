@@ -29,7 +29,12 @@ public class PlaneReset {
         int rowsToShift = minLiveCellRow.isPresent() ? minLiveCellRow.getAsInt() - 1 : 0;
         boolean isCellAtEndOfTheColumn = maxLiveCellCol.isPresent() && maxLiveCellCol.getAsInt() == boundary.getColumn() - 1;
         boolean isCellAtEndOfTheRow = maxLiveCellRow.isPresent() && maxLiveCellRow.getAsInt() == boundary.getRow() - 1;
-        return isCellAtEndOfTheColumn || isCellAtEndOfTheRow ? moveCellsBy(newPlane, boundary, rowsToShift, colsToShift) : newPlane;
+        boolean needCellShift = isCellAtEndOfTheColumn || isCellAtEndOfTheRow;
+        if (needCellShift) {
+            return moveCellsBy(newPlane, boundary, rowsToShift, colsToShift);
+        } else {
+            return newPlane;
+        }
     }
 
     private CellHealth[][] moveCellsBy(CellHealth[][] newPlane, Coordinate boundary, int rowsToShift, int colsToShift) {
